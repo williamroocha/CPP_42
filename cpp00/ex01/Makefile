@@ -1,7 +1,7 @@
-NAME = megaphone
+NAME = phonebook
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
-SRCS = megaphone.cpp
+SRCS = $(wildcard *.cpp)
 
 GREEN=\033[1;32m
 RST=\033[0m
