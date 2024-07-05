@@ -6,7 +6,7 @@
 /*   By: wiferrei <wiferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 08:48:49 by wiferrei          #+#    #+#             */
-/*   Updated: 2024/07/04 19:39:05 by wiferrei         ###   ########.fr       */
+/*   Updated: 2024/07/05 18:21:11 by wiferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,13 @@ class PhoneBook
 	~PhoneBook(void);
 
 	void AddContact(void);
-	// void SearchContact(void);
+	void SearchContact() const;
+	void DisplayHeader() const;
+	void DisplayContact(int index) const;
 
-  private:
-	Contact Contacts[8];
-	int index;
+private:
+	Contact _Contacts[8];
+	int _ContactsNbr;
 };
 
 #endif
