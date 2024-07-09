@@ -6,11 +6,11 @@
 /*   By: wiferrei <wiferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 08:49:56 by wiferrei          #+#    #+#             */
-/*   Updated: 2024/07/09 14:21:07 by wiferrei         ###   ########.fr       */
+/*   Updated: 2024/07/09 15:18:08 by wiferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Contact.Class.hpp"
+#include "PhoneBookIncludes.hpp"
 
 Contact::Contact(void)
 {

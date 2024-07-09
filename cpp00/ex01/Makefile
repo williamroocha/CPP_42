@@ -1,7 +1,10 @@
 NAME = phonebook
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
-SRCS = $(wildcard *.cpp)
+
+SRCS = main.cpp \
+	   Contact.Class.cpp\
+	   PhoneBook.Class.cpp
 
 GREEN=\033[1;32m
 RST=\033[0m

@@ -6,17 +6,14 @@
 /*   By: wiferrei <wiferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 08:48:49 by wiferrei          #+#    #+#             */
-/*   Updated: 2024/07/09 12:09:08 by wiferrei         ###   ########.fr       */
+/*   Updated: 2024/07/09 15:17:49 by wiferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHONE_BOOK_H
 # define PHONE_BOOK_H
 
-# include "Contact.Class.hpp"
-# include <iomanip>
-# include <iostream>
-# include <string.h>
+# include "PhoneBookIncludes.hpp"
 
 class PhoneBook
 {

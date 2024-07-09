@@ -6,12 +6,11 @@
 /*   By: wiferrei <wiferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 08:50:54 by wiferrei          #+#    #+#             */
-/*   Updated: 2024/07/09 14:08:28 by wiferrei         ###   ########.fr       */
+/*   Updated: 2024/07/09 15:24:34 by wiferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Contact.Class.hpp"
-#include "PhoneBook.Class.hpp"
+#include "PhoneBookIncludes.hpp"
 
 int	main(void)
 {
@@ -22,6 +21,12 @@ int	main(void)
 	{
 		std::cout << "Enter command (ADD, SEARCH, EXIT): ";
 		std::getline(std::cin, Command);
+		if (std::cin.eof())
+		{
+			std::cin.clear();
+			std::cout << "Invalid Command! Exiting..." << std::endl;
+			break ;
+		}
 		if (Command == "ADD")
 			PhoneBook.AddContact();
 		else if (Command == "SEARCH")

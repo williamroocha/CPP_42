@@ -6,14 +6,14 @@
 /*   By: wiferrei <wiferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 08:49:49 by wiferrei          #+#    #+#             */
-/*   Updated: 2024/07/09 14:21:24 by wiferrei         ###   ########.fr       */
+/*   Updated: 2024/07/09 15:16:03 by wiferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONTACT_HPP
 # define CONTACT_HPP
 
-# include <iostream>
+# include "PhoneBookIncludes.hpp"
 
 class Contact
 {

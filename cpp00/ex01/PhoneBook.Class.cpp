@@ -6,12 +6,11 @@
 /*   By: wiferrei <wiferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 08:47:58 by wiferrei          #+#    #+#             */
-/*   Updated: 2024/07/09 14:27:56 by wiferrei         ###   ########.fr       */
+/*   Updated: 2024/07/09 15:17:15 by wiferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.Class.hpp"
-#include <iomanip>
+#include "PhoneBookIncludes.hpp"
 
 PhoneBook::PhoneBook() : _ContactsNbr(0)
 {
