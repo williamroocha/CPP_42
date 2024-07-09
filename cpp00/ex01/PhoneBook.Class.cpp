@@ -6,7 +6,7 @@
 /*   By: wiferrei <wiferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 08:47:58 by wiferrei          #+#    #+#             */
-/*   Updated: 2024/07/09 13:15:11 by wiferrei         ###   ########.fr       */
+/*   Updated: 2024/07/09 14:27:56 by wiferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,11 @@
 
 PhoneBook::PhoneBook() : _ContactsNbr(0)
 {
-	std::cout << "PhoneBook constructor called!!!" << std::endl;
 	return ;
 }
 
 PhoneBook::~PhoneBook(void)
 {
-	std::cout << "PhoneBook destructor called!!!" << std::endl;
 	return ;
 }
 
@@ -139,7 +137,7 @@ void PhoneBook::DisplayFullContact() const
 	std::cout << "Last name: " << Contact.GetLastName() << std::endl;
 	std::cout << "Nick name: " << Contact.GetNickName() << std::endl;
 	std::cout << "Phone number: " << Contact.GetPhoneNumber() << std::endl;
-	std::cout << "Darkest Secret: " << Contact.GetDarkestSecret() << std::endl;
+	std::cout << "Darkest secret: " << Contact.GetDarkestSecret() << std::endl;
 }
 
 void PhoneBook::SearchContact() const

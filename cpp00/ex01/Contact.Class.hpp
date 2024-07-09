@@ -6,7 +6,7 @@
 /*   By: wiferrei <wiferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 08:49:49 by wiferrei          #+#    #+#             */
-/*   Updated: 2024/07/05 18:40:02 by wiferrei         ###   ########.fr       */
+/*   Updated: 2024/07/09 14:21:24 by wiferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ class Contact
 	std::string _NickName;
 	std::string _PhoneNumber;
 	std::string _DarkestSecret;
+
+	std::string _TruncateString(const std::string &str) const;
 };
 
 #endif

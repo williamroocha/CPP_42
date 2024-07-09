@@ -6,7 +6,7 @@
 /*   By: wiferrei <wiferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 08:49:56 by wiferrei          #+#    #+#             */
-/*   Updated: 2024/07/05 18:40:36 by wiferrei         ###   ########.fr       */
+/*   Updated: 2024/07/09 14:21:07 by wiferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,36 +73,22 @@ std::string Contact::GetDarkestSecret() const
 
 std::string Contact::TruncFirstName() const
 {
-	std::string FirstName = this->_FirstName;
-
-	if (FirstName.length() > 10)
-	{
-		FirstName.resize(9);
-		FirstName += ".";
-	}
-	return (FirstName);
+	return (_TruncateString(this->_FirstName));
 }
-
 std::string Contact::TruncLastName() const
 {
-	std::string LastName = this->_LastName;
-
-	if (LastName.length() > 10)
-	{
-		LastName.resize(9);
-		LastName += ".";
-	}
-	return (LastName);
+	return (_TruncateString(this->_LastName));
 }
-
 std::string Contact::TruncNickName() const
 {
-	std::string NickName = this->_NickName;
+	return (_TruncateString(this->_NickName));
+}
 
-	if (NickName.length() > 10)
+std::string Contact::_TruncateString(const std::string &str) const
+{
+	if (str.length() > 10)
 	{
-		NickName.resize(9);
-		NickName += ".";
+		return (str.substr(0, 9) + ".");
 	}
-	return (NickName);
+	return (str);
 }
