@@ -1,13 +1,13 @@
-NAME = phonebook
+NAME = BraiiiiiiinnnzzzZ
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRCS = main.cpp \
-	   Contact.cpp\
-	   PhoneBook.cpp
+	   Zombie.cpp \
+	   newZombie.cpp \
+	   randomChump.cpp
 
 GREEN=\033[1;32m
-RED=\033[1;31m
 RST=\033[0m
 
 OBJS = $(SRCS:.cpp=.o)
@@ -23,7 +23,6 @@ clean :
 
 fclean : clean
 	@rm -rf $(NAME)
-	@echo "$(RED) >> $(NAME) is deleted $(RST)"
 
 re : fclean all
 

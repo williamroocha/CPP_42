@@ -5,35 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: wiferrei <wiferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/03 08:50:54 by wiferrei          #+#    #+#             */
-/*   Updated: 2024/07/10 14:28:54 by wiferrei         ###   ########.fr       */
+/*   Created: 2024/07/10 10:44:20 by wiferrei          #+#    #+#             */
+/*   Updated: 2024/07/10 12:44:40 by wiferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBookIncludes.hpp"
+#include "Zombie.hpp"
 
 int main(void) {
-  PhoneBook PhoneBook;
-  std::string Command;
+  Zombie *lek = newZombie("lek");
+  lek->announce();
+  delete lek;
 
-  while (true) {
-    std::cout << "Enter command (ADD, SEARCH, EXIT): ";
-    std::getline(std::cin, Command);
-
-    if (std::cin.eof()) {
-      std::cin.clear();
-      std::cout << "Invalid Command! Exiting..." << std::endl;
-      break;
-    }
-
-    if (Command == "ADD")
-      PhoneBook.AddContact();
-    else if (Command == "SEARCH")
-      PhoneBook.SearchContact();
-    else if (Command == "EXIT")
-      break;
-    else
-      std::cout << "Invalid Command!!" << std::endl;
-  }
+  randomChump("randomZombie");
   return (0);
 }
