@@ -1,12 +1,14 @@
+
 NAME = BraiiiiiiinnnzzzZ
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRCS = main.cpp \
-	   Zombie.cpp \
-	   newZombie.cpp \
-	   randomChump.cpp
+       Zombie.cpp \
+       newZombie.cpp \
+       randomChump.cpp
 
+RED=\033[1;31m
 GREEN=\033[1;32m
 RST=\033[0m
 
@@ -16,13 +18,14 @@ all : $(NAME)
 
 $(NAME) : $(OBJS)
 	@$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
-	@echo "$(GREEN) >> $(NAME) is ready to use $(RST)"
+	@echo -e "$(GREEN) >> $(NAME) is ready to use $(RST)"
 
 clean :
 	@rm -rf $(OBJS)
 
 fclean : clean
 	@rm -rf $(NAME)
+	@echo -e "$(RED) >> $(NAME) is deleted $(RST)"
 
 re : fclean all
 
