@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wiferrei <wiferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/29 17:53:16 by wiferrei          #+#    #+#             */
-/*   Updated: 2024/07/15 18:52:30 by wiferrei         ###   ########.fr       */
+/*   Created: 2024/07/17 09:09:53 by wiferrei          #+#    #+#             */
+/*   Updated: 2024/07/17 10:45:08 by wiferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#include "Zombie.hpp"
 
 int main(int ac, char **av) {
-  if (ac <= 1)
-    std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
-  for (int i = 1; i < ac; ++i) {
-    for (int j = 0; av[i][j]; ++j) {
-      std::cout << (char)std::toupper(av[i][j]);
+  if (ac == 3) {
+
+    int N = atoi(av[1]);
+    Zombie *horde = zombieHorde(N, av[2]);
+
+    if (!horde)
+      return (0);
+
+    for (int i = 0; i < N; i++) {
+      horde[i].announce();
     }
+
+    delete[] horde;
+    return (0);
   }
-  std::cout << std::endl;
-  return (0);
 }
