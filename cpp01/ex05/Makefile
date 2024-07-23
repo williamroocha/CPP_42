@@ -1,9 +1,9 @@
-NAME = sedIsForLosers
+NAME = harl
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRCS = main.cpp\
-		FileReplacer.cpp
+		Harl.cpp
 
 RED=\033[1;31m
 GREEN=\033[1;32m
