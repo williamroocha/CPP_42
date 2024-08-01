@@ -15,14 +15,14 @@ all : $(NAME)
 
 $(NAME) : $(OBJS)
 	@$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
-	@echo -e "$(GREEN) >> $(NAME) is ready to use $(RST)"
+	@echo "$(GREEN) >> $(NAME) is ready to use $(RST)"
 
 clean :
 	@rm -rf $(OBJS)
 
 fclean : clean
 	@rm -rf $(NAME)
-	@echo -e "$(RED) >> $(NAME) is deleted $(RST)"
+	@echo  "$(RED) >> $(NAME) is deleted $(RST)"
 
 re : fclean all
 
