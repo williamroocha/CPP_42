@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: wiferrei <wiferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/09 15:59:29 by wiferrei          #+#    #+#             */
-/*   Updated: 2024/08/09 16:05:11 by wiferrei         ###   ########.fr       */
+/*   Created: 2024/08/09 16:12:56 by wiferrei          #+#    #+#             */
+/*   Updated: 2024/08/09 16:15:25 by wiferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,19 @@
 // Default constructor
 Fixed::Fixed() : _value(0) {
   std::cout << "Default constructor called" << std::endl;
+}
+
+// Constructor that takes an integer
+Fixed::Fixed(int const intValue) {
+  std::cout << "Int constructor called" << std::endl;
+  this->_value = intValue << _fractionalBits; // Convert integer to fixed-point
+}
+
+// Constructor that takes a floating-point number
+Fixed::Fixed(float const floatValue) {
+  std::cout << "Float constructor called" << std::endl;
+  this->_value = roundf(floatValue *
+                        (1 << _fractionalBits)); // Convert float to fixed-point
 }
 
 // Copy constructor
@@ -45,4 +58,20 @@ int Fixed::getRawBits(void) const {
 void Fixed::setRawBits(int const raw) {
   std::cout << "setRawBits member function called" << std::endl;
   this->_value = raw;
+}
+
+// Convert the fixed-point value to a floating-point number
+float Fixed::toFloat(void) const {
+  return static_cast<float>(this->_value) / (1 << _fractionalBits);
+}
+
+// Convert the fixed-point value to an integer
+int Fixed::toInt(void) const {
+  return this->_value >> _fractionalBits; // Convert fixed-point to integer
+}
+
+// Overload of the insertion (<<) operator for outputting the Fixed class
+std::ostream &operator<<(std::ostream &out, const Fixed &fixed) {
+  out << fixed.toFloat(); // Output the floating-point representation
+  return out;
 }
