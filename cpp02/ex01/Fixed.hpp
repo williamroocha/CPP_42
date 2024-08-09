@@ -6,7 +6,7 @@
 /*   By: wiferrei <wiferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 16:11:40 by wiferrei          #+#    #+#             */
-/*   Updated: 2024/08/09 16:25:44 by wiferrei         ###   ########.fr       */
+/*   Updated: 2024/08/09 16:34:43 by wiferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 class Fixed {
 private:
   int _value;                           // Stores the fixed-point number value
-  static const int _fractionalBits = 8; // Number of fractional bits
+  static const int __fractionalBits = 8; // Number of fractional bits
 
 public:
   // Default constructor

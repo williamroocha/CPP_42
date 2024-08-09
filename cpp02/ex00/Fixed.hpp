@@ -6,7 +6,7 @@
 /*   By: wiferrei <wiferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 15:47:43 by wiferrei          #+#    #+#             */
-/*   Updated: 2024/08/09 15:50:43 by wiferrei         ###   ########.fr       */
+/*   Updated: 2024/08/09 16:34:43 by wiferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 class Fixed {
 private:
   int _value;
-  static const int _fractionalBits = 8;
+  static const int __fractionalBits = 8;
 
 public:
   Fixed();

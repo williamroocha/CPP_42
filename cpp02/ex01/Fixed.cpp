@@ -6,7 +6,7 @@
 /*   By: wiferrei <wiferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 16:12:56 by wiferrei          #+#    #+#             */
-/*   Updated: 2024/08/09 16:15:25 by wiferrei         ###   ########.fr       */
+/*   Updated: 2024/08/09 16:34:43 by wiferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ Fixed::Fixed() : _value(0) {
 // Constructor that takes an integer
 Fixed::Fixed(int const intValue) {
   std::cout << "Int constructor called" << std::endl;
-  this->_value = intValue << _fractionalBits; // Convert integer to fixed-point
+  this->_value = intValue << __fractionalBits; // Convert integer to fixed-point
 }
 
 // Constructor that takes a floating-point number
 Fixed::Fixed(float const floatValue) {
   std::cout << "Float constructor called" << std::endl;
   this->_value = roundf(floatValue *
-                        (1 << _fractionalBits)); // Convert float to fixed-point
+                        (1 << __fractionalBits)); // Convert float to fixed-point
 }
 
 // Copy constructor
@@ -62,12 +62,12 @@ void Fixed::setRawBits(int const raw) {
 
 // Convert the fixed-point value to a floating-point number
 float Fixed::toFloat(void) const {
-  return static_cast<float>(this->_value) / (1 << _fractionalBits);
+  return static_cast<float>(this->_value) / (1 << __fractionalBits);
 }
 
 // Convert the fixed-point value to an integer
 int Fixed::toInt(void) const {
-  return this->_value >> _fractionalBits; // Convert fixed-point to integer
+  return this->_value >> __fractionalBits; // Convert fixed-point to integer
 }
 
 // Overload of the insertion (<<) operator for outputting the Fixed class
