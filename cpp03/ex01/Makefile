@@ -1,9 +1,10 @@
-NAME = claptrap
+NAME = ScavTrap
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRCS = main.cpp\
-        ClapTrap.cpp
+        ClapTrap.cpp \
+		ScavTrap.cpp \
 
 RED=\033[1;31m
 GREEN=\033[1;32m

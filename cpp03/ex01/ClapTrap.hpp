@@ -6,7 +6,7 @@
 /*   By: wiferrei <wiferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 16:30:55 by wiferrei          #+#    #+#             */
-/*   Updated: 2024/08/18 17:20:41 by wiferrei         ###   ########.fr       */
+/*   Updated: 2024/08/21 11:04:56 by wiferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 #define CLAPTRAP_HPP
 
 #include <iostream>
-#include <string>
 #include <sstream>
+#include <string>
 
 class ClapTrap {
-private:
+protected:
   std::string _name;
   int _hitpoints;
-  int _energy_points;
-  int _attack_damage;
+  int _energyPoints;
+  int _attackDamage;
 
 public:
   ClapTrap();
