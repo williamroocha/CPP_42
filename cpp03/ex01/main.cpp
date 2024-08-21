@@ -6,7 +6,7 @@
 /*   By: wiferrei <wiferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 17:08:22 by wiferrei          #+#    #+#             */
-/*   Updated: 2024/08/21 12:06:27 by wiferrei         ###   ########.fr       */
+/*   Updated: 2024/08/21 13:02:34 by wiferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int main() {
   scav1.attack("target");
   scav1.takeDamage(20);
   scav1.beRepaired(10);
-  scav1.guardGate(); // ScavTrap's special function
+  scav1.guardGate(); // Ensure it can enter guard mode
 
   // Testing ScavTrap copy constructor
   std::cout << "\n=== Testing ScavTrap Copy Constructor ===" << std::endl;

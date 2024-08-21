@@ -6,7 +6,7 @@
 /*   By: wiferrei <wiferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 16:30:55 by wiferrei          #+#    #+#             */
-/*   Updated: 2024/08/21 10:53:48 by wiferrei         ###   ########.fr       */
+/*   Updated: 2024/08/21 13:24:40 by wiferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 class ClapTrap {
 private:
   std::string _name;
-  int _hitpoints;
+  int _hitPoints;
   int _energyPoints;
   int _attackDamage;
 
