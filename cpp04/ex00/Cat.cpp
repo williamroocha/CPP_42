@@ -6,7 +6,7 @@
 /*   By: wiferrei <wiferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 16:39:10 by wiferrei          #+#    #+#             */
-/*   Updated: 2024/08/22 17:01:55 by wiferrei         ###   ########.fr       */
+/*   Updated: 2024/08/22 17:48:43 by wiferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,4 @@ Cat &Cat::operator=(const Cat &other) {
 
 Cat::~Cat() { std::cout << "Cat destructor called" << std::endl; }
 
-void Cat::makeSound() const { std::cout << "Meow!" << std::endl; }
+void Cat::makeSound() const { std::cout << "🐈 Miau!" << std::endl; }
