@@ -6,26 +6,26 @@
 /*   By: wiferrei <wiferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 16:39:10 by wiferrei          #+#    #+#             */
-/*   Updated: 2024/08/22 17:48:43 by wiferrei         ###   ########.fr       */
+/*   Updated: 2024/08/23 17:45:57 by wiferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
 Cat::Cat() : Animal("Cat") {
-  std::cout << "Cat default constructor called" << std::endl;
+  std::cout << "😺 : Cat default constructor called" << std::endl;
 }
 
 Cat::Cat(std::string type) : Animal(type) {
-  std::cout << "Cat type constructor called" << std::endl;
+  std::cout << "😺 : Cat type constructor called" << std::endl;
 }
 
 Cat::Cat(const Cat &other) : Animal(other) {
-  std::cout << "Cat copy constructor called" << std::endl;
+  std::cout << "😺 : Cat copy constructor called" << std::endl;
 }
 
 Cat &Cat::operator=(const Cat &other) {
-  std::cout << "Cat assignation operator called" << std::endl;
+  std::cout << "😺 : Cat assignation operator called" << std::endl;
   if (this != &other)
     Animal::operator=(other);
   return *this;
