@@ -6,6 +6,7 @@ SRCS = main.cpp\
         Bureaucrat.cpp \
 		AForm.cpp \
 		ShrubberyCreationForm.cpp \
+		RobotomyRequestForm.cpp \
 
 RED=\033[1;31m
 GREEN=\033[1;32m
