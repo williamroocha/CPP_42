@@ -1,7 +1,7 @@
 #include "Bureaucrat.hpp"
+#include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
-
 
 void testShrubberyCreationForm(int signGrade, int execGrade) {
   std::cout << "Testing ShrubberyCreationForm with Bureaucrat signing grade: "
@@ -48,8 +48,31 @@ void testRobotomyRequestForm(int signGrade, int execGrade) {
   }
 }
 
+void testPresidentialPardonForm(int signGrade, int execGrade) {
+  std::cout << "Testing PresidentialPardonForm with Bureaucrat signing grade: "
+            << signGrade << " and execution grade: " << execGrade << std::endl;
+
+  try {
+    Bureaucrat signer("Signer", signGrade);
+    Bureaucrat executor("Executor", execGrade);
+    PresidentialPardonForm form("TargetP");
+
+    std::cout << "Signing the form with Signer grade " << signGrade << "..."
+              << std::endl;
+    form.beSigned(signer);
+
+    std::cout << "Executing the form with Executor grade " << execGrade << "..."
+              << std::endl;
+    form.execute(executor);
+
+  } catch (const std::exception &e) {
+    std::cerr << "Error: " << e.what() << std::endl;
+  }
+}
+
 int main() {
   std::cout << "----------------------------------" << std::endl;
+
   std::cout << "Testing ShrubberyCreationForm..." << std::endl;
   // Valid signing grade, valid execution grade
   testShrubberyCreationForm(140, 130);
@@ -61,6 +84,7 @@ int main() {
   testShrubberyCreationForm(130, 150);
 
   std::cout << "----------------------------------" << std::endl;
+
   std::cout << "Testing RobotomyRequestForm..." << std::endl;
   // Valid signing grade, valid execution grade
   testRobotomyRequestForm(70, 40);
@@ -71,6 +95,14 @@ int main() {
   // Valid execution grade, insufficient signing grade
   testRobotomyRequestForm(40, 150);
 
+  std::cout << "----------------------------------" << std::endl;
+  std::cout << "Testing PresidentialPardonForm..." << std::endl;
+  // Valid signing and execution grades
+  testPresidentialPardonForm(20, 3);
+  // Invalid signing grade
+  testPresidentialPardonForm(30, 3);
+  // Invalid execution grade
+  testPresidentialPardonForm(20, 10);
   std::cout << "----------------------------------" << std::endl;
   return 0;
 }
