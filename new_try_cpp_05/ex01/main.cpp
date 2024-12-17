@@ -1,23 +1,29 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
-void testBureaucrat(const std::string &name, int grade) {
+void testForm(const std::string &name, int gradeRequired, int gradeToExecute) {
   try {
-    std::cout << "Testing Bureaucrat creation with name \"" << name
-              << "\" and grade " << grade << "..." << std::endl;
-    Bureaucrat bureaucrat(name, grade);
-    std::cout << "Created: " << bureaucrat << std::endl;
+    std::cout << "Testing Form creation with name \"" << name
+              << "\", grade required " << gradeRequired
+              << ", and grade to execute " << gradeToExecute << "..."
+              << std::endl;
+    Form form(name, gradeRequired, gradeToExecute);
+    std::cout << "Created: " << form << std::endl;
 
-    std::cout << "Attempting to increment grade by 10..." << std::endl;
-    bureaucrat.incrementGrade(10);
-    std::cout << "After increment: " << bureaucrat << std::endl;
+    std::cout << "Attempting to sign form with grade 1..." << std::endl;
+    Bureaucrat bureaucrat("Bureaucrat", 1);
+    form.beSigned(bureaucrat);
+    std::cout << "After signing: " << form << std::endl;
 
-    std::cout << "Attempting to decrement grade by 10..." << std::endl;
-    bureaucrat.decrementGrade(10);
-    std::cout << "After decrement: " << bureaucrat << std::endl;
+    std::cout << "Attempting to sign form with grade 150..." << std::endl;
+    Bureaucrat bureaucrat2("Bureaucrat2", 150);
+    form.beSigned(bureaucrat2);
+    std::cout << "After signing: " << form << std::endl;
 
-    std::cout << "Attempting to decrement grade by another 10..." << std::endl;
-    bureaucrat.decrementGrade(10);
-    std::cout << "After second decrement: " << bureaucrat << std::endl;
+    std::cout << "Attempting to sign form with grade 151..." << std::endl;
+    Bureaucrat bureaucrat3("Bureaucrat3", 151);
+    form.beSigned(bureaucrat3);
+    std::cout << "After signing: " << form << std::endl;
   } catch (std::exception &e) {
     std::cout << "Exception: " << e.what() << std::endl;
   }
@@ -25,10 +31,10 @@ void testBureaucrat(const std::string &name, int grade) {
 }
 
 int main() {
-  testBureaucrat("Bureaucrat1", 1);
-  testBureaucrat("Bureaucrat2", 150);
-  testBureaucrat("Bureaucrat3", 75);
-  testBureaucrat("Bureaucrat4", 0);
-  testBureaucrat("Bureaucrat5", 151);
+  testForm("Form1", 1, 1);
+  testForm("Form2", 150, 150);
+  testForm("Form3", 151, 151);
+  testForm("Form4", 0, 0);
+  testForm("Form5", 1, 150);
   return (0);
 }

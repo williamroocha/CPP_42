@@ -17,10 +17,10 @@ public:
   Form &operator=(const Form &copy);
   ~Form();
 
-  std::string getName();
-  bool getIsSigned();
-  int getGradeRequired();
-  int getGradeToExecute();
+  std::string getName() const;
+  bool getIsSigned() const;
+  int getGradeRequired() const;
+  int getGradeToExecute() const;
 
   void beSigned(const Bureaucrat &bureaucrat);
 
