@@ -5,7 +5,7 @@
 
 class Form {
 private:
-  std::string _name;
+  const std::string _name;
   bool _isSigned;
   int _gradeRequired;
   int _gradeToExecute;
