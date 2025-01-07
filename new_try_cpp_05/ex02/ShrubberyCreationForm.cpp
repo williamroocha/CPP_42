@@ -1,46 +1,57 @@
 #include "ShrubberyCreationForm.hpp"
 
+// Default constructor
 ShrubberyCreationForm::ShrubberyCreationForm()
-    : AForm("DefaultShrubberyCreationForm", 145, 137) {
-  std::cout << "ShrubberyCreationForm Default Constructor Called" << std::endl;
-}
+    : AForm("ShrubberyCreationForm", 145, 137), _target("default_target") {}
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target)
-    : AForm("ParaShuForm", 145, 137) {
-  target = _target;
-  std::cout << "ShrubberyCreationForm Constructor Called" << std::endl;
-}
+// Parameterized constructor
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target)
+    : AForm("ShrubberyCreationForm", 145, 137), _target(target) {}
 
-ShrubberyCreationForm::ShrubberyCreationForm(
-    const ShrubberyCreationForm &copy) {
-  *this = copy;
-}
+// Copy constructor
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other)
+    : AForm(other), _target(other._target) {}
 
+// Copy assignment operator
 ShrubberyCreationForm &
-ShrubberyCreationForm::operator=(const ShrubberyCreationForm &copy) {
-  if (this != &copy) {
-    AForm::operator=(copy);
-    _target = copy._target;
+ShrubberyCreationForm::operator=(const ShrubberyCreationForm &other) {
+  if (this != &other) {
+    AForm::operator=(other);
+    _target = other._target;
   }
   return *this;
 }
 
-ShrubberyCreationForm::~ShrubberyCreationForm() {
-  std::cout << "ShrubberyCreationForm Destructor Called" << std::endl;
-}
+// Destructor
+ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
+// Get target
 std::string ShrubberyCreationForm::getTarget() const { return _target; }
 
-void ShrubberyCreationForm::execute() const {
-  std::string fileName;
+// Execute method
+void ShrubberyCreationForm::execute(Bureaucrat const &executor) const {
+  // Perform necessary checks to ensure executor has the proper grade
+  if (!isSigned()) {
+    throw FormNotSignedException();
+  }
+  if (executor.getGrade() > getGradeToExecute()) {
+    throw GradeTooLowException();
+  }
 
-  fileName = _target + "_shrubbery.txt";
+  // Execute the form's logic, e.g., create a file
+  std::ofstream ofs((getTarget() + "_shrubbery").c_str());
+  if (!ofs) {
+    throw std::runtime_error("Error: could not open file for writing.");
+  }
 
-  std::fstream file(fileName.c_str(), std::ios::out);
-
-  if (file.is_open()) {
-    file << tree << std::endl;
-    file.close();
-  } else
-    std::cerr << "Error creating the file." << std::endl;
+  ofs << "       _-_\n"
+      << "    /~~   ~~\\\n"
+      << " /~~         ~~\\\n"
+      << "{               }\n"
+      << " \\  _-     -_  /\n"
+      << "   ~  \\\\ //  ~\n"
+      << " _- -   | | _- _\n"
+      << "   _ -  | |   -_\n"
+      << "       // \\\\\n";
+  ofs.close();
 }

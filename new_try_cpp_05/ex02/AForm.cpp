@@ -48,7 +48,7 @@ void AForm::checkRequirements(Bureaucrat const &executor) const {
   if (!_isSigned)
     throw FormNotSignedException();
   if (executor.getGrade() <= _gradeToExecute)
-    execute();
+    execute(executor);
   else
     throw GradeTooLowException();
 }
@@ -59,4 +59,16 @@ std::ostream &operator<<(std::ostream &output, const AForm &Aform) {
   output << "The grade to execute is " << Aform.getGradeToExecute()
          << std::endl;
   return (output);
+}
+
+const char* AForm::GradeTooHighException::what() const throw() {
+  return "Grade is too high for AForm!";
+}
+
+const char* AForm::GradeTooLowException::what() const throw() {
+  return "Grade is too low for AForm!";
+}
+
+const char* AForm::FormNotSignedException::what() const throw() {
+  return "The form has not been signed!";
 }

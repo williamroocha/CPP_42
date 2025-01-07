@@ -4,36 +4,19 @@
 #include "AForm.hpp"
 #include <fstream>
 
-#define tree                                                                   \
-  " \n\
-            ^ \n\
-           ^^^ \n\
-          ^^^^^ \n\
-         ^^^^^^^ \n\
-        ^^^^^^^^^ \n\
-       ^^^^^^^^^^^ \n\
-      ^^^^^^^^^^^^^ \n\
-     ^^^^^^^^^^^^^^^ \n\
-    ^^^^^^^^^^^^^^^^^ \n\
-          ||||| \n\
-          ||||| \n\
-          ||||| \n\
-          ||||| \n\
-"
-
 class ShrubberyCreationForm : public AForm {
 private:
   std::string _target;
 
 public:
   ShrubberyCreationForm();
-  ShrubberyCreationForm(std::string target);
-  ShrubberyCreationForm(const ShrubberyCreationForm &copy);
-  ShrubberyCreationForm &operator=(const ShrubberyCreationForm &copy);
+  ShrubberyCreationForm(const std::string &target);
+  ShrubberyCreationForm(const ShrubberyCreationForm &other);
+  ShrubberyCreationForm &operator=(const ShrubberyCreationForm &other);
   ~ShrubberyCreationForm();
 
+  void execute(Bureaucrat const &executor) const;
   std::string getTarget() const;
-  void execute() const;
 };
 
 #endif
