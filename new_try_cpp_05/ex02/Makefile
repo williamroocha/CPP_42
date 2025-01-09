@@ -6,6 +6,8 @@ SRCS = main.cpp\
         Bureaucrat.cpp \
 		AForm.cpp \
 		ShrubberyCreationForm.cpp \
+		RobotomyRequestForm.cpp \
+		PresidentialPardonForm.cpp	\
 
 RED=\033[1;31m
 GREEN=\033[1;32m
@@ -27,7 +29,7 @@ $(OBJDIR):
 	@mkdir -p $(OBJDIR)
 
 clean :
-	@rm -rf $(OBJDIR)
+	@rm -rf $(OBJDIR) 
 
 fclean : clean
 	@rm -rf $(NAME)

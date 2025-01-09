@@ -4,6 +4,8 @@
 #include <exception>
 #include <iostream>
 
+class AForm;
+
 class Bureaucrat {
 private:
   std::string _name;
@@ -30,6 +32,9 @@ public:
   public:
     const char *what() const throw();
   };
+
+  void signForm(AForm &Aform) const;
+  void executeForm(AForm const &form) const;
 };
 
 std::ostream &operator<<(std::ostream &output, const Bureaucrat &bureaucrat);
