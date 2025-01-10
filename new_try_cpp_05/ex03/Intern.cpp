@@ -15,7 +15,7 @@ Intern::~Intern() { std::cout << "Intern destructor" << std::endl; }
 
 Intern &Intern::operator=(const Intern &copy) {
   std::cout << "Intern assignation operator" << std::endl;
-  (void)copy; // Suppress unused parameter warning
+  (void)copy;
   return *this;
 }
 

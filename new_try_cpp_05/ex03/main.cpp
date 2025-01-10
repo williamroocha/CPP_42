@@ -9,28 +9,24 @@ int main() {
     Intern intern;
     AForm *form;
 
-    // Test creating ShrubberyCreationForm
     form = intern.makeForm("ShrubberyCreationForm", "home");
     if (form) {
       std::cout << *form << std::endl;
       delete form;
     }
 
-    // Test creating RobotomyRequestForm
     form = intern.makeForm("RobotomyRequestForm", "target");
     if (form) {
       std::cout << *form << std::endl;
       delete form;
     }
 
-    // Test creating PresidentialPardonForm
     form = intern.makeForm("PresidentialPardonForm", "target");
     if (form) {
       std::cout << *form << std::endl;
       delete form;
     }
 
-    // Test creating an unknown form
     form = intern.makeForm("UnknownForm", "target");
     if (form) {
       std::cout << *form << std::endl;
@@ -42,4 +38,3 @@ int main() {
 
   return 0;
 }
-
