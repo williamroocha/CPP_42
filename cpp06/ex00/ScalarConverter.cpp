@@ -9,7 +9,7 @@ ScalarConverter::~ScalarConverter() {}
 
 ScalarConverter &ScalarConverter::operator=(ScalarConverter const &copy) {
   if (this != &copy) {
-    // No data members to copy
+    *this = copy;
   }
   return *this;
 }
