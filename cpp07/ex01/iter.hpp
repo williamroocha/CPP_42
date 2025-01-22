@@ -14,4 +14,11 @@ template <typename T> void printData(T const &data) {
   std::cout << data << std::endl;
 }
 
+template <typename T>
+void printArray(T *array, int length, const std::string &typeName) {
+  std::cout << typeName << ": " << std::endl;
+  iter<T>(array, length, printData<T>);
+  std::cout << std::endl;
+}
+
 #endif
