@@ -1,64 +1,45 @@
 #include "Array.hpp"
-#include <cmath>
 #include <iostream>
 
-int main(void) {
+int main() {
   try {
-    // Valid tests
-    Array<int> a;
-    Array<int> b(5);
-    Array<char> c(11);
+    // Test default constructor
+    Array<int> emptyArray;
+    std::cout << "Empty array size: " << emptyArray.size() << std::endl;
 
-    // Setting values
-    for (int i = 0; i < 5; i++)
-      b[i] = i;
+    // Test parameterized constructor
+    Array<int> intArray(5);
+    std::cout << "Array size: " << intArray.size() << std::endl;
 
-    // Copy assignment operator
-    a = b;
+    // Access and modify elements
+    for (unsigned int i = 0; i < intArray.size(); i++) {
+      intArray[i] = i * 2;
+    }
 
-    for (int i = 0; i < 5; i++)
-      b[i] = i * 2;
-
-    // Printing a
-    std::cout << "a -> ";
-    for (int i = 0; i < 5; i++)
-      std::cout << a[i] << " ";
+    for (unsigned int i = 0; i < intArray.size(); i++) {
+      std::cout << intArray[i] << " ";
+    }
     std::cout << std::endl;
-    std::cout << "===========" << std::endl;
 
-    // Printing b
-    std::cout << "b -> ";
-    for (int i = 0; i < 5; i++)
-      std::cout << b[i] << " ";
-    std::cout << std::endl;
-    std::cout << "===========" << std::endl;
+    // Test copy constructor
+    Array<int> copiedArray = intArray;
+    copiedArray[0] = 99;
+    std::cout << "Copied array: " << copiedArray[0] << std::endl;
+    std::cout << "Original array: " << intArray[0] << std::endl;
 
-    // Setting values
-    c[0] = 'H';
-    c[1] = 'e';
-    c[2] = 'l';
-    c[3] = 'l';
-    c[4] = 'o';
-    c[5] = ' ';
-    c[6] = 'W';
-    c[7] = 'o';
-    c[8] = 'r';
-    c[9] = 'l';
-    c[10] = 'd';
+    // Test assignment operator
+    Array<int> assignedArray;
+    assignedArray = intArray;
+    assignedArray[1] = 88;
+    std::cout << "Assigned array: " << assignedArray[1] << std::endl;
+    std::cout << "Original array: " << intArray[1] << std::endl;
 
-    // Printing c
-    std::cout << "c -> ";
-    for (int i = 0; i < 10; i++)
-      std::cout << c[i];
-    std::cout << std::endl;
-    std::cout << "===========" << std::endl;
+    // Test out-of-bounds access
+    std::cout << intArray[10] << std::endl;
 
-    // Invalid tests
-    std::cout << "Invalid tests -> ";
-    std::cout << c[13];
-    std::cout << a[-1];
   } catch (const std::exception &e) {
-    std::cerr << e.what() << std::endl;
-    return 1;
+    std::cerr << "Exception: " << e.what() << std::endl;
   }
+
+  return 0;
 }

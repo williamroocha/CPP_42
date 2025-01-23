@@ -2,56 +2,30 @@
 #define ARRAY_HPP
 
 #include <iostream>
-
-#include <iostream>
 #include <stdexcept>
 
 template <typename T> class Array {
 private:
-  T *_array;
-  unsigned int _size;
+  T *data;
+  unsigned int len;
 
 public:
-  Array() : _array(NULL), _size(0) {}
+  Array();
 
-  Array(unsigned int n) : _array(n ? new T[n]() : NULL), _size(n) {}
+  Array(unsigned int n);
 
-  Array(const Array &src) : _array(new T[src._size]), _size(src._size) {
-    for (unsigned int i = 0; i < _size; i++) {
-      _array[i] = src._array[i];
-    }
-  }
+  Array(const Array &other);
 
-  ~Array() { delete[] _array; }
+  ~Array();
 
-  Array &operator=(const Array &rhs) {
-    if (this != &rhs) {
-      T *temp = new T[rhs._size];
-      for (unsigned int i = 0; i < rhs._size; i++) {
-        temp[i] = rhs._array[i];
-      }
-      delete[] _array;
-      _array = temp;
-      _size = rhs._size;
-    }
-    return *this;
-  }
+  Array &operator=(const Array &other);
 
-  T &operator[](unsigned int i) {
-    if (i >= _size) {
-      throw std::out_of_range("Index out of range");
-    }
-    return _array[i];
-  }
+  T &operator[](unsigned int index);
+  const T &operator[](unsigned int index) const;
 
-  const T &operator[](unsigned int i) const {
-    if (i >= _size) {
-      throw std::out_of_range("Index out of range");
-    }
-    return _array[i];
-  }
-
-  unsigned int size() const { return _size; }
+  unsigned int size() const;
 };
+
+#include "Array.tpp"
 
 #endif
