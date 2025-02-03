@@ -1,60 +1,40 @@
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 
-// Test invalid Form creation
-void testInvalidForm() {
+void testForm(const std::string &name, int gradeRequired, int gradeToExecute) {
   try {
-    std::cout << "Trying a high exception" << std::endl;
-    Form invalidForm("InvalidForm", 0, 10);
-  } catch (const Form::GradeTooHighException &e) {
+    std::cout << "Testing Form creation with name \"" << name
+              << "\", grade required " << gradeRequired
+              << ", and grade to execute " << gradeToExecute << "..."
+              << std::endl;
+    Form form(name, gradeRequired, gradeToExecute);
+    std::cout << "Created: " << form << std::endl;
+
+    std::cout << "Attempting to sign form with grade 1..." << std::endl;
+    Bureaucrat bureaucrat("Bureaucrat", 1);
+    form.beSigned(bureaucrat);
+    std::cout << "After signing: " << form << std::endl;
+
+    std::cout << "Attempting to sign form with grade 150..." << std::endl;
+    Bureaucrat bureaucrat2("Bureaucrat2", 150);
+    form.beSigned(bureaucrat2);
+    std::cout << "After signing: " << form << std::endl;
+
+    std::cout << "Attempting to sign form with grade 151..." << std::endl;
+    Bureaucrat bureaucrat3("Bureaucrat3", 151);
+    form.beSigned(bureaucrat3);
+    std::cout << "After signing: " << form << std::endl;
+  } catch (std::exception &e) {
     std::cout << "Exception: " << e.what() << std::endl;
   }
-
-  try {
-    std::cout << "Trying a high exception" << std::endl;
-    Form invalidForm("InvalidForm", 151, 10);
-  } catch (const Form::GradeTooLowException &e) {
-    std::cout << "Exception: " << e.what() << std::endl;
-  }
-}
-
-// Test valid Form creation and signing
-void testValidForm() {
-  try {
-    Bureaucrat b("John", 50);
-    Form validForm("ValidForm", 100, 50);
-
-    std::cout << "Trying a valid form" << std::endl;
-
-    std::cout << "Before signing: " << validForm << std::endl;
-    validForm.beSigned(b);
-    std::cout << "After signing: " << validForm << std::endl;
-  } catch (const std::exception &e) {
-    std::cout << "Exception: " << e.what() << std::endl;
-  }
-}
-
-// Test Form signing with insufficient grade
-void testFormSigningFailure() {
-  try {
-    Bureaucrat lowRankBureaucrat("LowRank", 120);
-    Form highLevelForm("HighLevelForm", 50, 50);
-
-    std::cout << "Trying to sign form with insufficient grade:" << std::endl;
-    highLevelForm.beSigned(lowRankBureaucrat);
-  } catch (const std::exception &e) {
-    std::cout << "Exception: " << e.what() << std::endl;
-  }
+  std::cout << "-----------------------------------------" << std::endl;
 }
 
 int main() {
-  std::cout << "Testing Form class:" << std::endl;
-  std::cout << "----------------------------------" << std::endl;
-  testInvalidForm();
-  std::cout << "----------------------------------" << std::endl;
-  testValidForm();
-  std::cout << "----------------------------------" << std::endl;
-  testFormSigningFailure();
-
-  return 0;
+  testForm("Form1", 1, 1);
+  testForm("Form2", 150, 150);
+  testForm("Form3", 151, 151);
+  testForm("Form4", 0, 0);
+  testForm("Form5", 1, 150);
+  return (0);
 }

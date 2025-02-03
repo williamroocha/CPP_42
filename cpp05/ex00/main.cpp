@@ -1,58 +1,34 @@
 #include "Bureaucrat.hpp"
 
-void testInvalidGradeHigh() {
+void testBureaucrat(const std::string &name, int grade) {
   try {
-    Bureaucrat failA("Test A", -1);
-    std::cout << failA << std::endl;
-  } catch (Bureaucrat::GradeTooHighException &e) {
-    std::cout << "Exception: " << e.what();
-  }
-}
+    std::cout << "Testing Bureaucrat creation with name \"" << name
+              << "\" and grade " << grade << "..." << std::endl;
+    Bureaucrat bureaucrat(name, grade);
+    std::cout << "Created: " << bureaucrat << std::endl;
 
-void testInvalidGradeLow() {
-  try {
-    Bureaucrat failB("Fail B", 151);
-    std::cout << failB << std::endl;
-  } catch (Bureaucrat::GradeTooLowException &e) {
-    std::cout << "Exception: " << e.what();
-  }
-}
+    std::cout << "Attempting to increment grade by 10..." << std::endl;
+    bureaucrat.incrementGrade(10);
+    std::cout << "After increment: " << bureaucrat << std::endl;
 
-void testValidBureaucratA() {
-  Bureaucrat a("Test A", 6);
-  std::cout << "---------------Test A-------------" << std::endl;
-  std::cout << a << std::endl;
-  a.decrementGrade(5);
-  std::cout << a << std::endl;
-  a.decrementGrade(1);
-  std::cout << a << std::endl;
-  a.incrementGrade(10);
-  std::cout << a << std::endl;
-  a.incrementGrade(2);
-  std::cout << a << std::endl;
-  std::cout << "----------------------------------" << std::endl;
-}
+    std::cout << "Attempting to decrement grade by 10..." << std::endl;
+    bureaucrat.decrementGrade(10);
+    std::cout << "After decrement: " << bureaucrat << std::endl;
 
-void testValidBureaucratB() {
-  Bureaucrat b("Test B", 145);
-  std::cout << "---------------Test B-------------" << std::endl;
-  std::cout << b << std::endl;
-  b.incrementGrade(9);
-  std::cout << b << std::endl;
-  b.incrementGrade(1);
-  try {
-    b.decrementGrade(332);
-  } catch (Bureaucrat::GradeTooLowException &e) {
-    std::cout << "Exception: " << e.what();
+    std::cout << "Attempting to decrement grade by another 10..." << std::endl;
+    bureaucrat.decrementGrade(10);
+    std::cout << "After second decrement: " << bureaucrat << std::endl;
+  } catch (std::exception &e) {
+    std::cout << "Exception: " << e.what() << std::endl;
   }
-  std::cout << b << std::endl;
-  std::cout << "----------------------------------" << std::endl;
+  std::cout << "-----------------------------------------" << std::endl;
 }
 
 int main() {
-  testInvalidGradeHigh();
-  testInvalidGradeLow();
-  testValidBureaucratA();
-  testValidBureaucratB();
-  return 0;
+  testBureaucrat("Bureaucrat1", 1);
+  testBureaucrat("Bureaucrat2", 150);
+  testBureaucrat("Bureaucrat3", 75);
+  testBureaucrat("Bureaucrat4", 0);
+  testBureaucrat("Bureaucrat5", 151);
+  return (0);
 }

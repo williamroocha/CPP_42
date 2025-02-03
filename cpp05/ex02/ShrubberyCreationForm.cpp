@@ -1,55 +1,48 @@
 #include "ShrubberyCreationForm.hpp"
 
-// Default constructor
 ShrubberyCreationForm::ShrubberyCreationForm()
     : AForm("ShrubberyCreationForm", 145, 137), _target("default_target") {}
 
-// Parameterized constructor
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target)
     : AForm("ShrubberyCreationForm", 145, 137), _target(target) {}
 
-// Copy constructor
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other)
-    : AForm(other), _target(other._target) {}
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &copy)
+    : AForm(copy), _target(copy._target) {}
 
-// Copy assignment operator
 ShrubberyCreationForm &
-ShrubberyCreationForm::operator=(const ShrubberyCreationForm &other) {
-  if (this != &other) {
-    AForm::operator=(other);
-    _target = other._target;
+ShrubberyCreationForm::operator=(const ShrubberyCreationForm &copy) {
+  if (this != &copy) {
+    AForm::operator=(copy);
+    _target = copy._target;
   }
   return *this;
 }
 
-// Destructor
 ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
-// Execute method
-void ShrubberyCreationForm::execute(Bureaucrat const &executor) const {
-  // Validate execution permissions
-  if (!isSigned())
-    throw GradeTooLowException();
-  if (executor.getGrade() > getGradeToExecute())
-    throw GradeTooLowException();
+std::string ShrubberyCreationForm::getTarget() const { return _target; }
 
-  // Create the file
-  std::ofstream outfile((_target + "_shrubbery").c_str());
-  if (!outfile.is_open()) {
-    throw std::ios_base::failure("Failed to create file");
+void ShrubberyCreationForm::execute(Bureaucrat const &executor) const {
+  if (!isSigned()) {
+    throw FormNotSignedException();
+  }
+  if (executor.getGrade() > getGradeToExecute()) {
+    throw GradeTooLowException();
   }
 
-  // Write ASCII trees
-  outfile << "      /\\      \n";
-  outfile << "     /\\*\\     \n";
-  outfile << "    /\\O\\*\\    \n";
-  outfile << "   /*/\\/\\/\\   \n";
-  outfile << "  /\\O\\/\\*\\/\\  \n";
-  outfile << " /\\*\\/\\*\\/\\/\\ \n";
-  outfile << "/\\O\\/\\/*/\\/O/\\\n";
-  outfile << "      ||      \n";
-  outfile << "      ||      \n";
-  outfile << "      ||      \n";
+  std::ofstream ofs((getTarget() + "_shrubbery").c_str());
+  if (!ofs) {
+    throw std::runtime_error("Error: could not open file for writing.");
+  }
 
-  outfile.close();
+  ofs << "       _-_\n"
+      << "    /~~   ~~\\\n"
+      << " /~~         ~~\\\n"
+      << "{               }\n"
+      << " \\  _-     -_  /\n"
+      << "   ~  \\\\ //  ~\n"
+      << " _- -   | | _- _\n"
+      << "   _ -  | |   -_\n"
+      << "       // \\\\\n";
+  ofs.close();
 }

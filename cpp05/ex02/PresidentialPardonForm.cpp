@@ -1,38 +1,36 @@
 #include "PresidentialPardonForm.hpp"
 
-// Default constructor
 PresidentialPardonForm::PresidentialPardonForm()
     : AForm("PresidentialPardonForm", 25, 5), _target("default_target") {}
 
-// Parameterized constructor
 PresidentialPardonForm::PresidentialPardonForm(const std::string &target)
     : AForm("PresidentialPardonForm", 25, 5), _target(target) {}
 
-// Copy constructor
 PresidentialPardonForm::PresidentialPardonForm(
-    const PresidentialPardonForm &other)
-    : AForm(other), _target(other._target) {}
+    const PresidentialPardonForm &copy)
+    : AForm(copy), _target(copy._target) {}
 
-// Copy assignment operator
 PresidentialPardonForm &
-PresidentialPardonForm::operator=(const PresidentialPardonForm &other) {
-  if (this != &other) {
-    AForm::operator=(other);
-    _target = other._target;
+PresidentialPardonForm::operator=(const PresidentialPardonForm &copy) {
+  if (this != &copy) {
+    AForm::operator=(copy);
+    _target = copy._target;
   }
   return *this;
 }
 
-// Destructor
 PresidentialPardonForm::~PresidentialPardonForm() {}
 
-// Overridden execute method
-void PresidentialPardonForm::execute(Bureaucrat const &executor) const {
-  if (!isSigned())
-    throw std::runtime_error("Form is not signed!");
-  if (executor.getGrade() > getGradeToExecute())
-    throw GradeTooLowException();
+std::string PresidentialPardonForm::getTarget() const { return _target; }
 
-  std::cout << _target << " has been pardoned by Zaphod Beeblebrox."
+void PresidentialPardonForm::execute(Bureaucrat const &executor) const {
+  if (!isSigned()) {
+    throw FormNotSignedException();
+  }
+  if (executor.getGrade() > getGradeToExecute()) {
+    throw GradeTooLowException();
+  }
+
+  std::cout << getTarget() << " has been pardoned by Zafod Beeblebrox."
             << std::endl;
 }
