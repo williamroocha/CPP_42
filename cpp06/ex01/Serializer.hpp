@@ -4,12 +4,11 @@
 #include "Data.hpp"
 #include <cerrno>
 #include <climits>
+#include <cstdlib>
 #include <iostream>
 #include <sstream>
-#include <cstdlib>
 #include <string>
 
-// uintptr_t defined as unsigned long for portability
 typedef unsigned long uintptr_t;
 
 class Serializer {

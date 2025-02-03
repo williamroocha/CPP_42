@@ -1,4 +1,4 @@
-NAME = ex00
+NAME = convert
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
@@ -12,23 +12,19 @@ RST = \033[0m
 OBJDIR = obj
 OBJS = $(SRCS:%.cpp=$(OBJDIR)/%.o)
 
-# Rule for building the executable
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	@$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 	@echo "$(GREEN) >> $(NAME) is ready to use $(RST)"
 
-# Rule for building object files
 $(OBJDIR)/%.o: %.cpp | $(OBJDIR)
 	@$(CXX) $(CXXFLAGS) -c $< -o $@
 	@echo "$(GREEN) >> Compiled $< successfully $(RST)"
 
-# Create the object directory if it doesn't exist
 $(OBJDIR):
 	@mkdir -p $(OBJDIR)
 
-# Cleaning rules
 clean:
 	@rm -rf $(OBJDIR)
 	@echo "$(RED) >> Object files cleaned $(RST)"
@@ -39,7 +35,6 @@ fclean: clean
 
 re: fclean all
 
-# Valgrind testing rule
 val: $(NAME)
 	@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME)
 
