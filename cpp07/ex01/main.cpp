@@ -1,5 +1,12 @@
 #include "iter.hpp"
 
+template <typename T>
+void printArray(T *array, int length, const std::string &typeName) {
+  std::cout << typeName << ": " << std::endl;
+  iter(array, length, print<T>);
+  std::cout << std::endl;
+}
+
 int main(void) {
   int length = 5;
 

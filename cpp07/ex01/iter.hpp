@@ -3,22 +3,23 @@
 
 #include <iostream>
 
-template <typename T>
-void iter(T *array, size_t length, void (*func)(T const &)) {
-  for (size_t i = 0; i < length; i++) {
+template <typename T> void iter(T *array, unsigned int len, void (*func)(T &)) {
+  if (!array || !func)
+    return;
+  for (unsigned int i = 0; i < len; i++) {
     func(array[i]);
   }
 }
 
-template <typename T> void printData(T const &data) {
-  std::cout << data << std::endl;
+template <typename T>
+void iter(const T *array, unsigned int len, void (*func)(const T &)) {
+  if (!array || !func)
+    return;
+  for (unsigned int i = 0; i < len; i++) {
+    func(array[i]);
+  }
 }
 
-template <typename T>
-void printArray(T *array, int length, const std::string &typeName) {
-  std::cout << typeName << ": " << std::endl;
-  iter<T>(array, length, printData<T>);
-  std::cout << std::endl;
-}
+template <typename T> void print(const T &x) { std::cout << x << std::endl; }
 
 #endif

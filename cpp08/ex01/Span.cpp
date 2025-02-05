@@ -24,9 +24,9 @@ void Span::addNumber(int num) {
 
 void Span::addRange(std::vector<int>::iterator begin,
                     std::vector<int>::iterator end) {
-  if (std::distance(begin, end) > (this->_N - _v.size()))
-    throw std::out_of_range("Not enough space to add all numbers");
-
+  if (std::distance(begin, end) > static_cast<long>(this->_N - _v.size())) {
+    throw std::out_of_range("Not enough space to add the range of numbers");
+  }
   _v.insert(_v.end(), begin, end);
 }
 
