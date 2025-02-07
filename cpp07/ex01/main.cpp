@@ -1,10 +1,12 @@
 #include "iter.hpp"
 
+using namespace std;
+
 template <typename T>
 void printArray(T *array, int length, const std::string &typeName) {
-  std::cout << typeName << ": " << std::endl;
+  cout << typeName << ": " << std::endl;
   iter(array, length, print<T>);
-  std::cout << std::endl;
+  cout << std::endl;
 }
 
 int main(void) {
