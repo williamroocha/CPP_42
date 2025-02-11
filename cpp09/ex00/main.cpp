@@ -1,14 +1,14 @@
 #include "BitcoinExchange.hpp"
 
-int main(int argc, char *argv[]) {
-  if (argc != 2) {
+int main(int ac, char *av[]) {
+  if (ac != 2) {
     std::cerr << "Error: Invalid number of arguments." << std::endl;
     return 1;
   }
 
   try {
-    BitcoinExchange btc("bitcoin_prices.csv"); // Pass the database file
-    btc.processInput(argv[1]);                 // Pass the input file
+    BitcoinExchange btc("data.csv");
+    btc.processInput(av[1]);
   } catch (const std::exception &e) {
     std::cerr << e.what() << std::endl;
     return 1;
