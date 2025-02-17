@@ -32,7 +32,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const {
 
   std::ofstream ofs((getTarget() + "_shrubbery").c_str());
   if (!ofs) {
-    throw std::runtime_error("Error: could not open file for writing.");
+    throw std::invalid_argument("Error: could not open file for writing.");
   }
 
   ofs << "       _-_\n"

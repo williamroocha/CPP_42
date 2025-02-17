@@ -1,9 +1,9 @@
-NAME = btc
+NAME = RPN
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRCS = main.cpp \
-	BitcoinExchange.cpp \
+	RPN.cpp \
 
 RED = \033[1;31m
 GREEN = \033[1;32m
@@ -34,5 +34,8 @@ fclean: clean
 	@echo "$(RED) >> $(NAME) is deleted $(RST)"
 
 re: fclean all
+
+val: $(NAME)
+	@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME) "1 2 + 4 * 5 + 3 -"
 
 .PHONY: all clean fclean re val
