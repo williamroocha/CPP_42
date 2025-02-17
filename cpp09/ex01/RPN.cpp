@@ -13,6 +13,7 @@ RPN &RPN::operator=(const RPN &other) {
 
 RPN::~RPN() {}
 
+// Validate if the expression is valid
 void RPN::validateExpression(const std::string &expression) {
   std::istringstream stream(expression);
   std::string token;
@@ -41,6 +42,7 @@ void RPN::validateExpression(const std::string &expression) {
   }
 }
 
+// Process a single token from the expression
 void RPN::processToken(const std::string &token) {
   if (isdigit(token[0])) {
     std::stringstream ss(token);
@@ -69,6 +71,8 @@ void RPN::processToken(const std::string &token) {
     }
   }
 }
+
+// Evaluate the expression
 int RPN::evaluate(const std::string &expression) {
   validateExpression(expression);
 
